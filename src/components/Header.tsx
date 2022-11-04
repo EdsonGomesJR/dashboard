@@ -1,8 +1,15 @@
 
-export function Header() {
+
+interface HeaderProps {
+  category: string;
+  title: string;
+}
+export function Header({category,title}: HeaderProps) {
   return (
-    <div>
-       Header
+    <div className="mb-10">
+      <p className="text-gray-400">{category}</p>
+      <p className="text-3xl font-extrabold text-slate-900 tracking-tight">{title}</p>
+       
     </div>
   )
 }

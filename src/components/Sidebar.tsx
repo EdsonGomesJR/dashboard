@@ -8,7 +8,7 @@ import { StateContext } from '../contexts/ContextProvider'
 
 export function Sidebar() {
 
-  const {activeMenu, handleActiveMenu, screenSize} = useContext(StateContext)
+  const {activeMenu, handleActiveMenu, screenSize, currentColor} = useContext(StateContext)
   const activeLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2'
   const normalLink = 'flex items-center gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
  
@@ -28,7 +28,7 @@ export function Sidebar() {
           </Link>
           <TooltipComponent content="Menu" position="BottomCenter">
            {/* md:hidden' */}
-            <button type='button' onClick={() => {handleActiveMenu(true)}} className='text-xl rounded-full p-3 hover:bg-light-gray mt-4 block '>
+            <button type='button'  onClick={() => {handleActiveMenu(true)}} className=' text-xl rounded-full p-3 hover:bg-light-gray mt-4 block'>
               <MdOutlineCancel />
             </button>
           </TooltipComponent>
@@ -41,10 +41,14 @@ export function Sidebar() {
                     {item.title}
                   </p> 
                   {item.links.map((link)=> (
-                    <NavLink key={link.name} to={`/${link.name}`} onClick={() => {handleCloseSideBar()}}
+                    <NavLink key={link.name} to={`/${link.name}`} 
+                     onClick={() => {handleCloseSideBar()}}
                      className={({isActive}) =>
                       isActive ? activeLink : normalLink
-                     }>
+                     }
+                     style={({isActive})=> ({
+                      backgroundColor: isActive ? currentColor : ''
+                     })}>
                         {link.icon}
                         <span className='capitalize'>{link.name}</span>
                     </NavLink>
