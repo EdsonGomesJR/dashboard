@@ -3,8 +3,8 @@ import {ChartComponent, SeriesCollectionDirective, SeriesDirective, Inject, Lege
 import {stackedCustomSeries, stackedPrimaryXAxis, stackedPrimaryYAxis} from '../../data/dummy'
 
 interface StackedProps {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
 }
 export function Stacked({width, height}: StackedProps){
 
